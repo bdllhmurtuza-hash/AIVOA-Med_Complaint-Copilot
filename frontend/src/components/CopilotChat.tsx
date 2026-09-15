@@ -72,6 +72,7 @@ export default function CopilotChat() {
   const chatMessages = useSelector((s: RootState) => s.copilot.chatMessages);
   const loading = useSelector((s: RootState) => s.copilot.loading);
   const sessionStarting = useSelector((s: RootState) => s.copilot.sessionStarting);
+  const uploadStage = useSelector((s: RootState) => s.copilot.uploadStage);
 
   const [inputText, setInputText] = useState("");
   const [isDragging, setIsDragging] = useState(false);
@@ -174,8 +175,11 @@ export default function CopilotChat() {
         ))}
         {loading && (
           <div className="chat-msg chat-msg--copilot chat-msg--loading">
-            <span className="dot-typing" aria-hidden />
-            Analyzing…
+            <span className="shimmer-text">
+              {uploadStage === "extracting"
+                ? "✦ AI is analyzing the document…"
+                : "✦ AI is thinking…"}
+            </span>
           </div>
         )}
         <div ref={messagesEndRef} />
@@ -247,7 +251,7 @@ export default function CopilotChat() {
         />
       </div>
 
-      <div className="chat-footer">POWERED BY LANGGRAPH</div>
+      <div className="chat-footer">AI responses may contain errors • POWERED BY LANGGRAPH</div>
     </div>
   );
 }
