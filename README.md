@@ -61,7 +61,7 @@ The goal is to make complaint intake and initial assessment faster and more stru
 - Openrouter
 
 ### Database
-- MYSQL
+- PostGreSQL
 
 ## Architecture
 
