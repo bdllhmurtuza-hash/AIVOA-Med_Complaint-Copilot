@@ -127,9 +127,9 @@ def _get_llm() -> ChatOpenAI:
     """
     Return the LLM client. Currently OpenRouter (meta-llama/llama-3.3-70b-instruct:free).
     To swap back to Groq: from langchain_groq import ChatGroq
-    then return ChatGroq(model="gemma2-9b-it", api_key=os.environ["GROQ_API_KEY"])
+    then return ChatGroq(model="gemma2-9b-it", api_key=os.getenv("GROQ_API_KEY"))
     """
-    api_key = os.environ.get("OPENROUTER_API_KEY")
+    api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY environment variable is not set.")
     return ChatOpenAI(
