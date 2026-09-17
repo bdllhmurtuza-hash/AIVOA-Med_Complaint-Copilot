@@ -10,6 +10,7 @@ Endpoints per SPEC.md section 3:
 Bonus: duplicate complaint detection (product_name + batch_number match).
 """
 
+from fastapi.middleware.cors import CORSMiddleware
 from __future__ import annotations
 
 import io
@@ -51,6 +52,14 @@ load_dotenv()
 # FastAPI app
 # ---------------------------------------------------------------------------
 app = FastAPI(title="AIVOA Complaint Copilot API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://aivoa-med-complaint-copilot-1.onrender.com"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # ---------------------------------------------------------------------------
