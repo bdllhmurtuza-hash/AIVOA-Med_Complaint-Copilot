@@ -11,6 +11,8 @@
  *   POST /complaints/commit  -> { complaint_id, committed_at }
  */
 
+const API_BASE = import.meta.env.VITE_API_URL || "";
+
 // ---------------------------------------------------------------------------
 // Complaint schema (single source of truth — SPEC §1, mirrored by the backend)
 // ---------------------------------------------------------------------------
@@ -65,7 +67,7 @@ export interface CommitResponse {
 // Fetch helpers
 // ---------------------------------------------------------------------------
 async function postJson<T>(url: string, body: unknown): Promise<T> {
-  const res = await fetch(url, {
+  const res = await fetch(API_BASE + url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -77,7 +79,7 @@ async function postJson<T>(url: string, body: unknown): Promise<T> {
 }
 
 async function postForm<T>(url: string, form: FormData): Promise<T> {
-  const res = await fetch(url, { method: "POST", body: form });
+  const res = await fetch(API_BASE + url, { method: "POST", body: form });
   if (!res.ok) {
     throw new Error(`${url} failed with status ${res.status}`);
   }
