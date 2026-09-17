@@ -2,6 +2,9 @@
 
 An AI-powered complaint management system designed to help pharmaceutical manufacturing teams capture, review, assess, and manage medical product complaints more efficiently.
 
+NOW YOU CAN LAUCH THE AIVOA-COPILOT DIRECTLY BY CLICKING THIS LINK:
+https://aivoa-med-complaint-copilot-1.onrender.com
+
 ## Overview
 
 AIVOA — Med Complaint Copilot combines a conversational AI interface with a structured complaint management workflow.
