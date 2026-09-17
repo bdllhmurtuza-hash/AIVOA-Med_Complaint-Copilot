@@ -10,7 +10,6 @@ Endpoints per SPEC.md section 3:
 Bonus: duplicate complaint detection (product_name + batch_number match).
 """
 
-from fastapi.middleware.cors import CORSMiddleware
 from __future__ import annotations
 
 import io
@@ -21,6 +20,7 @@ from datetime import datetime
 import pdfplumber
 from dotenv import load_dotenv
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 # Ensure the backend root is on sys.path so agent_test.py is importable
